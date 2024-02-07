@@ -31,7 +31,7 @@ public class Vaga implements Serializable {
 	private Date data;
 	
 	@NotNull
-	private Double salario;
+	private String salario;
 	
 	@OneToMany(mappedBy = "vaga", cascade = CascadeType.REMOVE)
 	private List<Candidato> candidatos;
@@ -68,11 +68,11 @@ public class Vaga implements Serializable {
 		this.data = data;
 	}
 
-	public Double getSalario() {
+	public String getSalario() {
 		return salario;
 	}
 
-	public void setSalario(Double salario) {
+	public void setSalario(String salario) {
 		this.salario = salario;
 	}
 
