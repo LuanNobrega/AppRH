@@ -10,9 +10,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "vaga")
 public class Vaga implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -28,6 +32,7 @@ public class Vaga implements Serializable {
 	private String descricao;
 	
 	@NotNull
+	@Temporal(TemporalType.DATE)
 	private Date data;
 	
 	@NotNull

@@ -1,5 +1,7 @@
 package com.Projeto.AppRH;
 
+import java.util.Properties;
+
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
@@ -24,13 +26,19 @@ public class DataConfiguration {
 	
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
-		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-		adapter.setDatabase(Database.MYSQL);
-		adapter.setShowSql(true);
-		adapter.setGenerateDdl(true);
-		adapter.setDatabasePlatform("org.hibernate.dialect.MariaDBDialect");
-		adapter.setPrepareConnection(true);
-		return adapter;		
+	    HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+	    adapter.setDatabase(Database.MYSQL);
+	    adapter.setShowSql(true);
+	    adapter.setGenerateDdl(true);
+	    adapter.setDatabasePlatform("org.hibernate.dialect.MariaDBDialect");
+	    adapter.setPrepareConnection(true);
+	    return adapter;        
+	}
+
+	private Properties additionalProperties() {
+	    Properties properties = new Properties();
+	    properties.setProperty("hibernate.hbm2ddl.auto", "update");
+	    return properties;
 	}
 	
 }

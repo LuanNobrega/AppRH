@@ -81,14 +81,14 @@ public class VagaController {
 	public String detalhesVagaPost(@PathVariable("codigo") long codigo, @Valid Candidato candidato,
 			BindingResult result, RedirectAttributes attributes) {
 
-		if (result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "Verifique os campos");
-			return "redirect:/{codigo}";
-		}
-
 		// rg duplicado
 		if (cr.findByRg(candidato.getRg()) != null) {
 			attributes.addFlashAttribute("mensagem_erro", "RG duplicado");
+			return "redirect:/{codigo}";
+		}
+		
+		if (result.hasErrors()) {
+			attributes.addFlashAttribute("mensagem", "Verifique os campos");
 			return "redirect:/{codigo}";
 		}
 
